@@ -1,12 +1,13 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "useDefineForClassFields": false,
-    "baseUrl": "src"
-  },
-  "include": ["src"]
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"lib": ["esnext", "dom"],
+		"allowSyntheticDefaultImports": true,
+		"experimentalDecorators": true,
+		"useDefineForClassFields": false,
+		"baseUrl": "src"
+	},
+	"include": ["src"]
 }
