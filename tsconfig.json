@@ -1,9 +1,10 @@
 {
 	"compilerOptions": {
 		"target": "esnext",
-		"module": "esnext",
+		"module": "AMD",
 		"moduleResolution": "node",
 		"lib": ["esnext", "dom"],
+		"outFile": "./s1seven-verification.js",
 		"allowSyntheticDefaultImports": true,
 		"experimentalDecorators": true,
 		"useDefineForClassFields": false,
