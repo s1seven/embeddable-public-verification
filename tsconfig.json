@@ -1,14 +1,22 @@
 {
 	"compilerOptions": {
 		"target": "esnext",
-		"module": "AMD",
-		"moduleResolution": "node",
+		"module": "NodeNext",
+		"moduleResolution": "nodenext",
 		"lib": ["esnext", "dom"],
-		"outFile": "./s1seven-verification.js",
+		"esModuleInterop": true,
+		"isolatedModules": true,
 		"allowSyntheticDefaultImports": true,
 		"experimentalDecorators": true,
 		"useDefineForClassFields": false,
-		"baseUrl": "src"
+		"baseUrl": "src",
+		"sourceMap": true,
+		"noEmit": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true,
+		"skipLibCheck": true,
+		"strict": false
 	},
 	"include": ["src"]
 }

@@ -25,8 +25,6 @@ type Company = {
 	name: String;
 };
 
-type Response = {};
-
 @customElement("s1seven-verify")
 export class S1sevenVerify extends TailwindElement("") {
 	@property({ type: Boolean })
