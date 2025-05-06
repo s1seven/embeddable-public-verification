@@ -3,49 +3,7 @@ import { customElement, property, state } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { TailwindElement } from "../shared/tailwind.element";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
-
-type Summary = {
-	sellerName: String;
-	buyerName: String;
-	productDescription: String;
-	orderNumber: String;
-	orderPosition: String;
-	deliveryNumber: String;
-	deliveryPosition: String;
-	identifier: String;
-};
-
-export enum HashAlgorithm {
-	Md5 = "md5",
-	Sha1 = "sha1",
-	Sha256 = "sha256",
-	Sha512 = "sha512",
-	Sha3256 = "sha3-256",
-	Sha3384 = "sha3-384",
-	Sha3512 = "sha3-512",
-}
-
-type Hash = {
-	value: String;
-	algorithm: HashAlgorithm;
-};
-
-type Identity = {
-	id: String;
-	publicKey: string;
-};
-
-type Company = {
-	name: String;
-};
-
-interface VerificationData {
-	summary: Summary;
-	identity?: Identity;
-	company?: Company;
-	hash: Hash;
-	timestamp: string;
-}
+import { VerificationData } from "./types";
 
 const translations = {
 	en: {
@@ -253,7 +211,7 @@ export class S1sevenVerify extends TailwindElement("") {
 			const interpolatedString = this._interpolate(template, {
 				...commonVars,
 				companyName: result.company.name,
-				publicKey: result.identity.id,
+				publicKey: result.identity.publicKey,
 			});
 			return html`${unsafeHTML(interpolatedString)}`;
 		} else {
@@ -430,7 +388,16 @@ export class S1sevenVerify extends TailwindElement("") {
 				<div class="w-full">
 					<div class="bg-white px-6 py-8 shadow-xl ring-1 ring-gray-900/5 rounded-2xl">
 						<div class="flex flex-col gap-4 rounded-2xl">
-							<h2 class="text-2xl font-semibold">${this.t("certificateNotarized")}</h2>
+							<h2 class="text-2xl font-semibold flex flex-row gap-2">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+									<path
+										fill-rule="evenodd"
+										d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+										clip-rule="evenodd"
+									/>
+								</svg>
+								${this.t("certificateNotarized")}
+							</h2>
 							<div class="bg-gray-200 rounded-lg p-4 text-sm text-gray-800">${this.getResultSummary(this._verificationData)}</div>
 							<div class="rounded-lg border border-gray-300 overflow-hidden">
 								<table class="table-auto w-full text-sm">
